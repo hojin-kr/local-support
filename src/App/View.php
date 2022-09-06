@@ -152,7 +152,7 @@ let infowindows = []
 function getShops(sigungu, latlng) {
         $.ajax({
         method: "GET",
-        url: Domain + ":8080/shop/?sigungu=" + sigungu +"&lat="+ String(latlng._lat) + "&lng=" + String(latlng._lng),
+        url: Domain + "/shop/?sigungu=" + sigungu +"&lat="+ String(latlng._lat) + "&lng=" + String(latlng._lng),
         })
         .done(function( msg ) {
             if (msg == "null") {
