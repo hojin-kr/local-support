@@ -34,7 +34,7 @@ class Shop
         $client = $this->getClient();
         $service = new Sheets($client);
         try{
-            $spreadsheetId = '';
+            $spreadsheetId = '16_RLF5cy36Y-kZJMc0whzqZiSWpHum3o10bp2gn83YI';
             $labels = explode(",", Shop::LABELS);
             $rangeKey = array_search($sigungu, $labels);
             if (!isset(Shop::RNAGES[$rangeKey])) {

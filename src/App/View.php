@@ -25,7 +25,16 @@
             background-color: #FFFFFF;
             box-shadow: 0.1em 0.1em 0.1em 0.1em #D3D3D3;
             padding: 1.5em;
-            margin: 0.3em 1em 1em 0em;
+            margin: 1em;
+            font-weight: 600;
+            color: #171D2E;
+        }
+        .btn-flat {
+            border: 0em solid aliceblue;
+            border-radius: 0.5em;
+            background-color: #FFFFFF;
+            padding: 1.5em;
+            margin: 1em;
             font-weight: 600;
             color: #171D2E;
         }
@@ -34,18 +43,31 @@
             border: 0em solid aliceblue;
             border-radius: 0.5em;
         }
-        .btn:hover {
+        #notice {
+            color: #171D2E;
+        }
+        .hover:hover {
             background-color: #171D2E;
             color: #FFFFFF;
+        }
+        a {
+            color: #171D2E;
         }
     </style>
 </head>
 <body>
+<div id="header">
+    <button class="btn-flat">
+        경기 지역화폐 가맹점
+    </button>
+    <button class="btn-flat">
+        <a href="https://github.com/hojin-kr/local-support">개발 정보</a>
+    </button>
+</div>
 <div id="map"></div>
 <div id="footer">
-    <button id="btn-center" class="btn">내 위치로 이동</button>
-    <button id="btn-search" class="btn">현 위치에서 검색</button>
-
+    <button id="btn-center" class="btn hover">내 위치로 이동</button>
+    <button id="btn-search" class="btn hover">현 위치에서 검색</button>
 </div>
 <script>
 
@@ -81,6 +103,7 @@ function onSuccessGeolocation(position) {
 
     // infowindow.open(map, location);
     console.log('Coordinates: ' + location.toString());
+    searchCoordinateToAddress(location)
 }
 
 function onErrorGeolocation() {
@@ -118,7 +141,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 function resize(){
     var mapWidth = window.innerWidth
-    var mapHeight = window.innerHeight - document.getElementById('footer').offsetHeight
+    var mapHeight = window.innerHeight - document.getElementById('footer').offsetHeight - document.getElementById('header').offsetHeight
     var Size = new naver.maps.Size(mapWidth, mapHeight)
     map.setSize(Size)
 }
@@ -126,11 +149,10 @@ function resize(){
 let Domain = window.location.protocol + "//" + window.location.hostname
 let infowindows = []
 
-
 function getShops(sigungu, latlng) {
         $.ajax({
         method: "GET",
-        url: Domain + "/shop/?sigungu=" + sigungu +"&lat="+ String(latlng._lat) + "&lng=" + String(latlng._lng),
+        url: Domain + ":8080/shop/?sigungu=" + sigungu +"&lat="+ String(latlng._lat) + "&lng=" + String(latlng._lng),
         })
         .done(function( msg ) {
             if (msg == "null") {
@@ -139,7 +161,7 @@ function getShops(sigungu, latlng) {
             let shops = JSON.parse(msg)
             console.log(shops.length)
             if (shops.length == 0) {
-                alert("검색 준비중인 지역입니다. [ "+ sigungu +" ]")
+                alert("검색 준비중인 지역입니다. [ "+ sigungu +" ] \n *성남, 김포, 시흥 등 3개 시군은 현재 데이터 가공중으로 추후 업데이트 예정입니다.")
             }
             let latlngs = []
             let infos = []
@@ -173,6 +195,7 @@ function getShops(sigungu, latlng) {
                 marker.addListener('mouseout', onMouseOut);
                 marker.addListener('click',onMouseOver)
             }
+            $("#btn-search").text("현 위치에서 검색")
         })
     }
 
@@ -192,6 +215,7 @@ function onMouseOut(e) {
 }
 
 function searchCoordinateToAddress(latlng) {
+    $("#btn-search").text("검색중 ...")
     naver.maps.Service.reverseGeocode({
     coords: latlng,
     }, function(status, response) {
