@@ -1,0 +1,6 @@
+#!/bin/bash
+export GOOGLE_CLOUD_PROJECT=
+export GOOGLE_APPLICATION_CREDENTIALS=
+
+export IS_STREAM_LOG=
+export ENV=

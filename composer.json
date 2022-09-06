@@ -1,0 +1,21 @@
+{
+    "name": "hojin/url",
+    "description": "url shorter",
+    "autoload": {
+        "psr-4": {
+            "Hojin\\Url\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hojin",
+            "email": "jhj377@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^2.8",
+        "google/cloud-datastore": "^1.16",
+        "google/cloud-logging": "^1.24",
+        "google/apiclient": "^2.0"
+    }
+}

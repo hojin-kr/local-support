@@ -1,0 +1,10 @@
+### Composer ###
+composer.phar
+vendor/
+
+### Key ###
+url-358416-56080cd2195d.json
+localsupport-361715-c2b193ac653b.json
+token.json
+### Log ###
+log/
