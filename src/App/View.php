@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title>지역 화폐 가맹점 지도에서 보기</title>
+    <title>경기지역화폐 가맹점 지도에서 보기</title>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=z3s5m464oj&submodules=geocoder"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
@@ -16,7 +16,7 @@
         font-family: 'Roboto', sans-serif;
         background-color: #F5F5F8;
     }
-        #footer {
+        #function {
             height: 5em;
         }
         .btn {
@@ -24,8 +24,8 @@
             border-radius: 0.5em;
             background-color: #FFFFFF;
             box-shadow: 0.1em 0.1em 0.1em 0.1em #D3D3D3;
-            padding: 1.5em;
-            margin: 1em;
+            padding: 1em;
+            margin: 0.5em;
             font-weight: 600;
             color: #171D2E;
         }
@@ -53,22 +53,30 @@
         a {
             color: #171D2E;
         }
+        footer {
+            font-size: small;
+            margin: 0.2em;
+        }
+        header {
+            font-size: small;
+            margin: 0.2em;
+        }
     </style>
 </head>
 <body>
-<div id="header">
-    <button class="btn-flat">
-        경기 지역화폐 가맹점
-    </button>
-    <button class="btn-flat">
-        <a href="https://github.com/hojin-kr/local-support">개발 정보</a>
+<header id="header">경기지역화폐 가맹점</header>
+<div id="banner">
+    <button class="btn ad-banner">
+        <a href="https://github.com/hojin-kr/local-support">배너 광고</a>
     </button>
 </div>
 <div id="map"></div>
-<div id="footer">
+<div id="function">
     <button id="btn-center" class="btn hover">내 위치로 이동</button>
     <button id="btn-search" class="btn hover">현 위치에서 검색</button>
+    <button id="btn-request" class="btn hover">문의하기</button>
 </div>
+<footer id="footer">(c) jhj377@gmail.com</footer>
 <script>
 
 let globalLat = 37.385296486885
@@ -81,6 +89,19 @@ $("#btn-search").on("click", ()=>{
 
 $("#btn-center").on("click", ()=>{
     setCurrentPosition()
+})
+
+$("#btn-request").on("click", ()=>{
+    msg = prompt("문의 내용을 입력해주세요.")
+    if (msg != null) {
+        $.ajax({
+            method: "GET",
+            url: Domain + "/slack/?msg="+msg,
+        })
+        .done(function( msg ) {
+            alert("문의 내용이 개발자에게 전송되었습니다.")
+        })
+    }
 })
 
 var map = new naver.maps.Map('map', {
@@ -141,7 +162,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 function resize(){
     var mapWidth = window.innerWidth
-    var mapHeight = window.innerHeight - document.getElementById('footer').offsetHeight - document.getElementById('header').offsetHeight
+    var mapHeight = window.innerHeight - document.getElementById('banner').offsetHeight - document.getElementById('function').offsetHeight - 55
     var Size = new naver.maps.Size(mapWidth, mapHeight)
     map.setSize(Size)
 }
