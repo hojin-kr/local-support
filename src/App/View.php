@@ -162,7 +162,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 function resize(){
     var mapWidth = window.innerWidth
-    var mapHeight = window.innerHeight - document.getElementById('banner').offsetHeight - document.getElementById('function').offsetHeight - 55
+    var mapHeight = window.innerHeight - document.getElementById('banner').offsetHeight - document.getElementById('function').offsetHeight - 50
     var Size = new naver.maps.Size(mapWidth, mapHeight)
     map.setSize(Size)
 }
