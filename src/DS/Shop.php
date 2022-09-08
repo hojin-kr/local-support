@@ -48,10 +48,10 @@ class Shop
             if (empty($values)) {
                 throw new Exception("do not found data");
             }
-            $range['lat']['up'] = (float)$lat + 0.005;
-            $range['lat']['down'] = (float)$lat - 0.005;
-            $range['lng']['up'] = (float)$lng + 0.005;
-            $range['lng']['down'] = (float)$lng - 0.005;
+            $range['lat']['up'] = (float)$lat + 0.002;
+            $range['lat']['down'] = (float)$lat - 0.002;
+            $range['lng']['up'] = (float)$lng + 0.002;
+            $range['lng']['down'] = (float)$lng - 0.002;
             // (new Logger)->info("test", $range);
             $shop = [];
             foreach ($values as $row) {

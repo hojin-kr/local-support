@@ -29,6 +29,16 @@
             font-weight: 600;
             color: #171D2E;
         }
+        .btn-small {
+            border: 0em solid aliceblue;
+            border-radius: 0.5em;
+            background-color: #FFFFFF;
+            box-shadow: 0.1em 0.1em 0.1em 0.1em #D3D3D3;
+            padding: 0.5em;
+            margin: 0.5em;
+            font-weight: 600;
+            color: #171D2E;
+        }
         .btn-flat {
             border: 0em solid aliceblue;
             border-radius: 0.5em;
@@ -53,18 +63,33 @@
         a {
             color: #171D2E;
         }
-        footer {
-            font-size: small;
-            margin: 0.2em;
+        #header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+
         }
-        header {
-            font-size: small;
-            margin: 0.2em;
+        #header-logo {
+            margin: 0.5em;
+        }
+        #header-section-btn {
+            display: flex;
+            flex-direction: row;
+            justify-content: right;
         }
     </style>
 </head>
 <body>
-<header id="header">경기지역화폐 가맹점</header>
+<div id="header">
+    <div>
+        <header id="header-logo">경기지역화폐 가맹점</header>
+    </div>
+    <div id="header-section-btn">
+        <button id="btn-request" class="btn-small hover">🤔 문의하기</button>
+        <button id="btn-request" class="btn-small hover" onclick="location.href='https://litt.ly/world'">👋 다른 서비스</button>
+    </div>
+</div>
 <div id="banner">
     <button class="btn ad-banner">
         <a href="https://github.com/hojin-kr/local-support">배너 광고</a>
@@ -72,11 +97,9 @@
 </div>
 <div id="map"></div>
 <div id="function">
-    <button id="btn-center" class="btn hover">내 위치로 이동</button>
-    <button id="btn-search" class="btn hover">현 위치에서 검색</button>
-    <button id="btn-request" class="btn hover">문의하기</button>
+    <button id="btn-center" class="btn hover">🚀 내 위치로 이동</button>
+    <button id="btn-search" class="btn hover">🔎 지금 위치에서 검색</button>
 </div>
-<footer id="footer">(c) jhj377@gmail.com</footer>
 <script>
 
 let globalLat = 37.385296486885
@@ -162,7 +185,7 @@ window.addEventListener('DOMContentLoaded', function(){
 
 function resize(){
     var mapWidth = window.innerWidth
-    var mapHeight = window.innerHeight - document.getElementById('banner').offsetHeight - document.getElementById('function').offsetHeight - 50
+    var mapHeight = window.innerHeight - document.getElementById('banner').offsetHeight - document.getElementById('function').offsetHeight - document.getElementById('header').offsetHeight
     var Size = new naver.maps.Size(mapWidth, mapHeight)
     map.setSize(Size)
 }
@@ -206,7 +229,6 @@ function getShops(sigungu, latlng) {
                         '   <h4>' + infos[i][1] + '</h4>',
                         '   <p> 전화 : ' + infos[i][4] + ' <br />',
                         '   <p> 주소 : ' + infos[i][7] + ' <br />',
-                        '   <p> 주소 : ' + infos[i][10]+infos[i][11] + ' <br />',
                         '   </p>',
                         '</div>'
                     ].join('');
@@ -238,7 +260,7 @@ function onMouseOut(e) {
 }
 
 function searchCoordinateToAddress(latlng) {
-    $("#btn-search").text("검색중 ...")
+    $("#btn-search").text("⏳ 검색중 ...")
     naver.maps.Service.reverseGeocode({
     coords: latlng,
     }, function(status, response) {
