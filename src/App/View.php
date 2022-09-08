@@ -91,9 +91,7 @@
     </div>
 </div>
 <div id="banner">
-    <button class="btn ad-banner">
-        <a href="https://github.com/hojin-kr/local-support">배너 광고</a>
-    </button>
+    <button class="btn ad-banner" onclick="location.href='https://litt.ly/world'">이 위치 광고 배너</button>
 </div>
 <div id="map"></div>
 <div id="function">
