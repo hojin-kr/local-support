@@ -197,7 +197,8 @@ function getShops(sigungu, latlng) {
                         map: map,
                     })
 
-                marker.set('seq', i);
+                seq = infos[i][2]
+                marker.set('seq', seq);
                 marker.set('category', infos[i][6])
 
                 var contentString = [
@@ -205,11 +206,12 @@ function getShops(sigungu, latlng) {
                         '   <h4>' + infos[i][1] + '</h4>',
                         '   <p> 전화 : ' + infos[i][4] + ' <br />',
                         '   <p> 주소 : ' + infos[i][7] + ' <br />',
+                        '   <p> 주소 : ' + infos[i][10]+infos[i][11] + ' <br />',
                         '   </p>',
                         '</div>'
                     ].join('');
 
-                infowindows.push(new naver.maps.InfoWindow({
+                infowindows[seq] = (new naver.maps.InfoWindow({
                     content: contentString
                 }))
                 marker.addListener('mouseover', onMouseOver);
