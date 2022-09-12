@@ -5,6 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-53B1RPPZ05"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-53B1RPPZ05');
+    </script>
     <title>경기지역화폐 가맹점 지도에서 보기</title>
     <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=z3s5m464oj&submodules=geocoder"></script>
     <style>
@@ -86,8 +95,8 @@
         <header id="header-logo">경기지역화폐 가맹점</header>
     </div>
     <div id="header-section-btn">
-        <button id="btn-request" class="btn-small hover">🤔 문의하기</button>
-        <button id="btn-request" class="btn-small hover" onclick="location.href='https://litt.ly/world'">👋 다른 서비스</button>
+        <button class="btn-small hover" onclick="location.href='https://litt.ly/world'">🤔 문의하기</button>
+        <button class="btn-small hover" onclick="location.href='https://litt.ly/world'">👋 다른 서비스</button>
     </div>
 </div>
 <div id="banner">
