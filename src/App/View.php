@@ -234,7 +234,6 @@ function getShops(sigungu, latlng) {
                 var contentString = [
                         '<div class="iw_inner inner-desc">',
                         '   <h4>' + infos[i][1] + '</h4>',
-                        '   <p> 전화 : ' + infos[i][4] + ' <br />',
                         '   <p> 주소 : ' + infos[i][7] + ' <br />',
                         '   </p>',
                         '</div>'
