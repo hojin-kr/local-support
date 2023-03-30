@@ -99,9 +99,9 @@
         <button class="btn-small hover" onclick="location.href='https://litt.ly/world'">👋 다른 서비스</button>
     </div>
 </div>
-<div id="banner">
+<!-- <div id="banner">
     <button class="btn ad-banner" onclick="location.href='https://litt.ly/world'">이 위치 광고 배너</button>
-</div>
+</div> -->
 <div id="map"></div>
 <div id="function">
     <button id="btn-center" class="btn hover">🚀 내 위치로 이동</button>
@@ -212,7 +212,7 @@ function getShops(sigungu, latlng) {
             let shops = JSON.parse(msg)
             console.log(shops.length)
             if (shops.length == 0) {
-                alert("검색 준비중인 지역입니다. [ "+ sigungu +" ] \n *성남, 김포, 시흥 등 3개 시군은 현재 데이터 가공중으로 추후 업데이트 예정입니다.")
+                alert("검색 준비중인 지역입니다. [ "+ sigungu +" ]")
             }
             let latlngs = []
             let infos = []
