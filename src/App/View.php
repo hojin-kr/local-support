@@ -99,9 +99,9 @@
         <button class="btn-small hover" onclick="location.href='https://litt.ly/world'">👋 다른 서비스</button>
     </div>
 </div>
-<!-- <div id="banner">
+<div id="banner">
     <button class="btn ad-banner" onclick="location.href='https://litt.ly/world'">이 위치 광고 배너</button>
-</div> -->
+</div>
 <div id="map"></div>
 <div id="function">
     <button id="btn-center" class="btn hover">🚀 내 위치로 이동</button>
